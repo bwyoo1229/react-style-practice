@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "classnames": "^2.2.6",
+    "polished": "^4.0.5",
     "sass": "^1.32.4",
     "styled-components": "^5.2.1"
   }
