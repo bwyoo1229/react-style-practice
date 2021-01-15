@@ -12,10 +12,23 @@ $blue: #228bef;
   border-radius: none;
   cursor: pointer;
 
-  height: 2.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  font-size: 1rem;
+
+  &.large {
+    height: 3rem;
+    font-size: 1.25rem;
+  }
+
+  &.medium {
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+
+  &.small {
+    height: 1.75rem;
+    font-size: 0.875rem;
+  }
 
   background: $blue;
   &:hover {
@@ -23,5 +36,9 @@ $blue: #228bef;
   }
   &:active {
     background: darken($blue, 10%);
+  }
+
+  & + & {
+    margin-left: 1rem;
   }
 }
