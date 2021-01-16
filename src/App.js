@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from './components/SButton';
 import styled, { ThemeProvider } from 'styled-components';
+import Dialog from './components/Dialog';
 
 const AppBlock = styled.div`
   width: 512px;
@@ -41,39 +42,31 @@ const palette = {
 };
 
 function App() {
+  // 앱 컴포넌트 안에 상태 만들기
+  const [dialog, setDialog] = useState(false);
+  const onClick = () => setDialog(true);
+  const onConfirm = () => setDialog(false);
+  const onCancel = () => setDialog(false);
+
   return (
+    // ThemeProvider 내부에선 하나의 컴포넌트만 있어야 한다.
+    // 대체 방법 fragment 만들기
     <ThemeProvider theme={{ palette, sizes }}>
-      <AppBlock>
-        <ButtonGroup>
-          <Button size="large">Button</Button>
-          <Button color="gray">Button</Button>
-          <Button color="pink" size="small">
-            Button
+      <>
+        <AppBlock>
+          <Button color="pink" size="large" onClick={onClick}>
+            삭제
           </Button>
-        </ButtonGroup>
-        <ButtonGroup>
-          <Button size="large" outline>
-            Button
-          </Button>
-          <Button color="gray" outline>
-            Button
-          </Button>
-          <Button color="pink" size="small" outline>
-            Button
-          </Button>
-        </ButtonGroup>
-        <ButtonGroup>
-          <Button size="large" fullWidth>
-            Button
-          </Button>
-          <Button color="gray" size="large" fullWidth>
-            Button
-          </Button>
-          <Button color="pink" size="large" fullWidth>
-            Button
-          </Button>
-        </ButtonGroup>
-      </AppBlock>
+        </AppBlock>
+        <Dialog
+          title="정말로 삭제하시겠습니까?"
+          confirmText="삭제"
+          cancelText="취소"
+          visible={dialog}
+          onConfirm={onConfirm}
+          onCancel={onCancel}
+        />
+      </>
     </ThemeProvider>
   );
 }
