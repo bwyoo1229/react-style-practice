@@ -4,7 +4,6 @@ import { darken, lighten } from 'polished';
 
 // 스타일 따로 분리
 const colorStyles = css`
-  // 색상
   ${({ theme, color }) => {
     const selected = theme.palette[color];
 
@@ -16,6 +15,17 @@ const colorStyles = css`
       &:active {
         background: ${darken(0.1, selected)};
       }
+    `;
+  }}
+`;
+
+const sizeStyles = css`
+  ${({ theme, size }) => {
+    const selected = theme.sizes[size];
+
+    return css`
+      height: ${selected.height};
+      font-size: ${selected.fontSize};
     `;
   }}
 `;
@@ -35,12 +45,11 @@ const StyledButton = styled.button`
   padding-left: 1rem;
   padding-right: 1rem;
 
-  // 크기
-  height: 2.25rem;
-  font-size: 1rem;
-
   // 색상
   ${colorStyles}
+
+  // 크기
+  ${sizeStyles}
 
   // 기타
   & + & {
@@ -48,9 +57,9 @@ const StyledButton = styled.button`
   }
 `;
 
-function Button({ children, color, ...rest }) {
+function Button({ children, color, size, ...rest }) {
   return (
-    <StyledButton color={color} {...rest}>
+    <StyledButton color={color} size={size} {...rest}>
       {children}
     </StyledButton>
   );
@@ -58,6 +67,7 @@ function Button({ children, color, ...rest }) {
 
 Button.defaultProps = {
   color: 'blue',
+  size: 'medium',
 };
 
 export default Button;
