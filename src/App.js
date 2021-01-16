@@ -18,14 +18,17 @@ const ButtonGroup = styled.div`
 
 const sizes = {
   large: {
+    width: '6rem',
     height: '3rem',
     fontSize: '1.25rem',
   },
   medium: {
+    width: '6rem',
     height: '2.25rem',
     fontSize: '1rem',
   },
   small: {
+    width: '6rem',
     height: '1.75rem',
     fontSize: '0.875rem',
   },
@@ -45,6 +48,28 @@ function App() {
           <Button size="large">Button</Button>
           <Button color="gray">Button</Button>
           <Button color="pink" size="small">
+            Button
+          </Button>
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button size="large" outline>
+            Button
+          </Button>
+          <Button color="gray" outline>
+            Button
+          </Button>
+          <Button color="pink" size="small" outline>
+            Button
+          </Button>
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button size="large" fullWidth>
+            Button
+          </Button>
+          <Button color="gray" size="large" fullWidth>
+            Button
+          </Button>
+          <Button color="pink" size="large" fullWidth>
             Button
           </Button>
         </ButtonGroup>
